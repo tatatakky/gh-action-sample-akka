@@ -1,7 +1,8 @@
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model._
-import akka.http.scaladsl.server.Directives._
+
+import http.controllers.Controller
+
 import scala.io.StdIn
 
 object Main {
@@ -10,16 +11,7 @@ object Main {
     implicit val system           = ActorSystem("my-system")
     implicit val executionContext = system.dispatcher
 
-    val routes =
-      path("") {
-        get {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Start Page of Akka!</h1>"))
-        }
-      } ~ path("hello") {
-        get {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h2>Say hello to akka-http</h2>"))
-        }
-      }
+    val routes = (new Controller).routes
 
     val bindingFuture = Http().newServerAt("0.0.0.0", 8080).bindFlow(routes)
 
