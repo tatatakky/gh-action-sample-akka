@@ -2,30 +2,27 @@ name: Scala Continuous Integration
 
 on:
   push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+  schedule:
+    - cron: '0 7 * * *'
 
 jobs:
-  build:
-    
+  test:
     strategy:
       matrix:
-        os: [ubuntu-latest]
         scala: [2.13.4]
-        java:
-          - adopt@1.8
-          - adopt@1.11
-        platform: [jvm]
-    runs-on: ${{ matrix.os }}
+        java: [8, 11]
+    runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout current branch
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Setup JVM and Scala
+      - name: Setup Java and Scala
         uses: olafurpg/setup-scala@v10
         with:
-          java-version: ${{ matrix.java }}
+          java-version: adopt@1.${{ matrix.java }}
+      - uses: coursier/cache-action@v5
       - name: Run tests
         run: sbt test
