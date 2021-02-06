@@ -1,16 +1,15 @@
-name: Scala Continuous Integration
+name: Continuous Integration
 
 on:
   push:
   pull_request:
   schedule:
-    - cron: '0 7 * * *'
+    - cron: '0 0,7 * * *'
 
 jobs:
   test:
     strategy:
       matrix:
-        scala: [2.13.4]
         java: [8, 11]
     runs-on: ubuntu-latest
     
