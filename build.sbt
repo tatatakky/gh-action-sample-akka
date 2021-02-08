@@ -24,3 +24,5 @@ scalacOptions ++= Seq(
   "-feature",
   "-unchecked"
 )
+
+assemblyJarName in assembly := "main.jar"
