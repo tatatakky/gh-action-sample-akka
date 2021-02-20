@@ -30,3 +30,4 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY . /app
 WORKDIR /app
+RUN sbt assembly
