@@ -11,8 +11,9 @@ jobs:
     strategy:
       matrix:
         java: [8, 11]
-    name: Java${{ matrix.java }}
-    runs-on: ubuntu-latest
+        os: [ ubuntu-latest, macos-latest ]
+    name: ${{ matrix.os }} / Java${{ matrix.java }}
+    runs-on: ${{ matrix.os }}
     
     steps:
       - name: Checkout current branch
