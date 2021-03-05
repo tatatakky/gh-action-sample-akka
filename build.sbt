@@ -2,7 +2,7 @@ name := "gh-action-sample-akka"
 
 version := "0.1"
 
-scalaVersion := "2.13.4"
+scalaVersion := "2.13.5"
 
 val akkaVersion ="2.6.12"
 val akkaHttpVersion = "10.2.3"

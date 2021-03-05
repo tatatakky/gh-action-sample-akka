@@ -15,9 +15,9 @@ RUN apt-get install -y default-jre \
                        default-jdk
 
 # scala
-RUN wget https://downloads.lightbend.com/scala/2.13.4/scala-2.13.4.deb && \
-    dpkg -i scala-2.13.4.deb && \
-    rm scala-2.13.4.deb
+RUN wget https://downloads.lightbend.com/scala/2.13.5/scala-2.13.5.deb && \
+    dpkg -i scala-2.13.5.deb && \
+    rm scala-2.13.5.deb
 
 # sbt
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf && \
